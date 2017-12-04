@@ -89,15 +89,19 @@ export default WithSlidesLink(class Presentation extends React.Component {
       <Deck transition={["zoom", "slide"]} theme={theme} transitionDuration={500}>
         <Slide transition={["zoom"]} bgColor="primary">
           <Heading size={1} fit caps lineHeight={1} textColor="black">
-            React-Native
+            Bienvenue au Meetup  React-Native
+              <List>
+                  <Appear><ListItem>Claude LEULLIETTE</ListItem></Appear>
+                  <Appear><ListItem>Guillaume BAECHLER</ListItem></Appear>
+              </List>
           </Heading>
         </Slide>
 
         <Slide transition={["zoom", "fade"]} bgColor="primary">
           <Heading size={2} textColor='tertiary'>react-native?</Heading>
           <List>
-            <Appear><ListItem>Developing phone apps, with React</ListItem></Appear>
-            <Appear><ListItem>Supports Android, and iOS</ListItem></Appear>
+            <Appear><ListItem>Developpement d'application mobile avec React</ListItem></Appear>
+            <Appear><ListItem>Support Android et iOS</ListItem></Appear>
             <Appear><ListItem>Truly native - not just a web view</ListItem></Appear>
           </List>
         </Slide>
