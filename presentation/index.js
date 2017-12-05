@@ -5,7 +5,8 @@ import React from "react";
 import {
     Appear, BlockQuote, Cite, CodePane, ComponentPlayground, Deck, Fill,
     Heading, Image, Layout, Link, ListItem, List, Quote, Slide, SlideSet,
-    TableBody, TableHeader, TableHeaderItem, TableItem, TableRow, Table, Text
+    TableBody, TableHeader, TableHeaderItem, TableItem, TableRow, Table, Text,
+    Notes
 } from "spectacle";
 
 // Import image preloader util
@@ -30,6 +31,7 @@ import {IPhone, Android} from './phones';
 
 const images = {
     accueil: require("../assets/accueil.jpg"),
+    reactsite: require("../assets/reactsite.jpg"),
     city: require("../assets/city.jpg"),
     buttons: require("../assets/buttons.png"),
     reactNativeElements: require("../assets/react-native-elements.png"),
@@ -88,8 +90,8 @@ export default WithSlidesLink(class Presentation extends React.Component {
     render() {
         return (
             <Deck transition={["zoom", "slide"]} theme={theme} transitionDuration={500}>
-                <Slide transition={["zoom"]} bgImage={images.accueil.replace("/", "")}  >
-                    <Heading size={1} fit caps lineHeight={1} textColor="black">
+                <Slide transition={["zoom"]} bgImage={images.accueil.replace("/", "")}>
+                    <Heading size={2} fit caps textColor='tertiary'>
                         Bienvenue au Meetup React-Native</Heading>
                     <List>
                         <Appear><ListItem>Claude LEULLIETTE</ListItem></Appear>
@@ -98,237 +100,77 @@ export default WithSlidesLink(class Presentation extends React.Component {
                 </Slide>
 
                 <Slide transition={["zoom", "fade"]} bgColor="primary">
-                    <Heading size={2} textColor='tertiary'>react-native ?</Heading>
+                    <Notes>
+                        <h4>Slide notes</h4>
+                        <ol>
+                            <li>note 1</li>
+                            <li>note 2</li>
+                        </ol>
+                    </Notes>
+                    <Heading size={2} fit textColor='tertiary'>Qu'est-ce que React-Native ?</Heading>
                     <List>
-                        <Appear><ListItem>Developpement d'application mobile avec React</ListItem></Appear>
-                        <Appear><ListItem>Support Android et iOS</ListItem></Appear>
-                        <Appear><ListItem>Le rendu est du native - ce n'est pas une web view</ListItem></Appear>
+                        <Appear><ListItem fit>Developpement d'application native avec React</ListItem></Appear>
+                        <Appear><ListItem fit>Support Android et iOS</ListItem></Appear>
+                        <Appear><ListItem fit>Expérience utilisateur - look and feel natif</ListItem></Appear>
+                        <Appear><ListItem fit>Performance équivalente </ListItem></Appear>
                     </List>
                 </Slide>
 
                 <Slide transition={["zoom", "fade"]} bgColor="primary">
                     <Heading size={2} textColor='tertiary'>Qu'est-ce que React ?</Heading>
                     <List>
-                        <Appear><ListItem>React est la librairie Javasript créée par Facebook et Instagram</ListItem></Appear>
-                        <Appear><ListItem>Built upon the concept of Components</ListItem></Appear>
-                        <Appear><ListItem>A JavaScript library used and developed by Facebook</ListItem></Appear>
-                        <Appear><ListItem>Open Source</ListItem></Appear>
+                        <Appear><ListItem>React est la librairie Javascript créée par Facebook</ListItem></Appear>
+                        <Appear><ListItem>"Learn once, write everywhere"</ListItem></Appear>
+                        <Appear><ListItem>Open Source - nombreux contributeurs sur Github</ListItem></Appear>
+                        <Appear><ListItem>Une approche par composants</ListItem></Appear>
                     </List>
                 </Slide>
 
-                <Slide transition={["zoom", "fade"]} bgColor="primary">
-                    <Heading size={2} textColor='black'>Example</Heading>
-                </Slide>
-
-                <Slide
-                    notes={`
-            Show that you can modify the element in real time.
-
-            Modify the text of the component.
-            Change MyComponent to Foo, see it break.
-          `}
-                >
-                    <ReactExample />
-                </Slide>
-
-                <Slide transition={["zoom", "fade"]} bgColor="primary">
-                    <Heading size={4} textColor='black'>Configuring Components</Heading>
-                    <Heading size={6} textColor='tertiary'>props</Heading>
-                </Slide>
-
-                <Slide
-                    notes={`
-              Rename MyComponent to Application
-
-              // Everything extends React.Component
-              class Application extends React.Component {
-                render() {
-                  return (
-                    <div>
-                      {this.props.title}
-                    </div>
-                  );
-                }
-              }
-
-              render(<Application title='Hello world!' />, mountNode);
-          `}
-                >
-                    <ReactExample />
-                </Slide>
-
-                <Slide transition={["zoom", "fade"]} bgColor="primary">
-                    <Heading size={4} textColor='black'>More Props</Heading>
-                    <Heading size={6} textColor='tertiary'>Components for our Models</Heading>
-                </Slide>
-
-                <Slide
-                    notes={`
-              Rename MyComponent to Person
-
-              // Everything extends React.Component
-              class Person extends React.Component {
-                render() {
-                  return (
-                    <div>
-                      <div>Name: {this.props.name}</div>
-                      <div>Age: {this.props.age}</div>
-                    </div>
-                  );
-                }
-              }
-
-              render(<Person name='Gordon' age={27} />, mountNode);
-          `}
-                >
-                    <ReactExample />
-                </Slide>
-
-                <Slide transition={["zoom", "fade"]} bgColor="primary">
-                    <Heading size={5}>React-Native?</Heading>
+                <Slide transition={["zoom", "fade"]} bg bgColor="primary">
+                    <Heading size={2} textColor='tertiary'>Comparaison avec les autres technologies</Heading>
                     <List>
-                        <Appear><ListItem>Default React Components - View, Text, Image, etc</ListItem></Appear>
-                        <Appear><ListItem>Style Sheet support, including flexbox</ListItem></Appear>
+                        <Appear><ListItem>Apache Cordova et Ionic </ListItem></Appear>
+                        <Appear><ListItem>Application native qui charge une webview</ListItem></Appear>
+                        <Appear><ListItem>Une page web(html, css, javascript) est chargée dans cette webview</ListItem></Appear>
+                        <Appear><ListItem>Un bridge javascript / natif permet d'utiliser les méthodes natives</ListItem></Appear>
+                    </List>
+                </Slide>
+                <Slide transition={["zoom", "fade"]} bg bgColor="primary">
+                    <Heading size={2} textColor='tertiary'>Les problèmes</Heading>
+                    <List>
+                        <Appear><ListItem>Glisser déposer</ListItem></Appear>
+                        <Appear><ListItem>Liste d'image</ListItem></Appear>
+                        <Appear><ListItem>Apparition du clavier</ListItem></Appear>
+                        <Appear><ListItem>Webview style</ListItem></Appear>
+                        <Appear><ListItem>Performance inégale</ListItem></Appear>
+                    </List>
+                </Slide>
+                <Slide transition={["zoom", "fade"]} bg bgColor="primary">
+                    <Heading size={2} textColor='tertiary'>L'approche React Native</Heading>
+                    <List>
+                        <Appear><ListItem>React  Native transforme la vue en code natif</ListItem></Appear>
+                        <Appear><ListItem>Pas de perte de temps - hot reloading</ListItem></Appear>
+                        <Appear><ListItem>Se combine avec les composants écrits en Objective-C, Java ou Swift. </ListItem></Appear>
+                    </List>
+                </Slide>
+
+                <Slide transition={["zoom", "fade"]}  bgImage={images.reactsite.replace("/", "")}>
+                    <Heading size={5}>le site React Native</Heading>
+                    <List>
+                        <Appear><ListItem>Composants React - View, Text, Image, etc</ListItem></Appear>
+                        <Appear><ListItem>Gestion des styles et organisation dans l'écran(flexbox)</ListItem></Appear>
                         <Appear><ListItem>Animations</ListItem></Appear>
                         <Appear><ListItem>Navigators</ListItem></Appear>
                         <Appear><ListItem>XHR / AJAX Support</ListItem></Appear>
                     </List>
                 </Slide>
 
-                <Slide>
-                    <Heading size={5}>Useful Components</Heading>
-                    <NativeExample code={`
-import React from 'react';
-import { AppRegistry, View, Text, Image, Button } from 'react-native';
 
-// View, similar to div
-// Text, similar to span
-class HelloWorldApp extends React.Component {
-  render() {
-    const picture = {
-      uri: 'https://media.giphy.com/media/26ufdipQqU2lhNA4g/giphy.gif'
-    };
 
-    return (
-      <View>
-        <Text>
-          Hello world!
-        </Text>
-        <Button
-          title="Button!"
-          accessibilityLabel="Learn more about this button"
-        />
-        <Image
-          source={picture}
-          style={{width: 193, height: 110}}
-        />
-      </View>
-    );
-  }
-}
-
-// Register your App, rather than mounting like before
-AppRegistry.registerComponent('HelloWorldApp', () => HelloWorldApp);
-          `}/>
-
-                    <Appear>
-                        <Text>Note: Live preview != Native</Text>
-                    </Appear>
-                </Slide>
-
-                <Slide>
-                    <Image width="75%" src={images.buttons}/>
-                </Slide>
-
-                <Slide>
-                    <Heading size={5}>Styling</Heading>
-                    <NativeExample code={`
-import React from 'react';
-import { AppRegistry, StyleSheet, View, Text, Image } from 'react-native';
-
-// Style sheets
-const styles = StyleSheet.create({
-  heading: {
-    fontWeight: 'bold',
-    fontSize: 32,
-  },
-  red: {
-    color: 'red',
-  },
-  blue: {
-    color: 'blue',
-  }
-});
-
-class HelloWorldApp extends React.Component {
-  render() {
-    return (
-      <View>
-        <Text style={styles.heading}>
-          Heading
-        </Text>
-        <Text style={styles.red}>
-          Red text
-        </Text>
-        <Text style={styles.blue}>
-          Blue text
-        </Text>
-        <Text style={[styles.heading, styles.red]}>
-          Blue Heading
-        </Text>
-      </View>
-    );
-  }
-}
-
-// Register your App, rather than mounting like before
-AppRegistry.registerComponent('HelloWorldApp', () => HelloWorldApp);
-          `}/>
-                </Slide>
-
-                <Slide>
-                    <Heading size={5}>Flex Box</Heading>
-                    <NativeExample code={`
-import React, { Component } from 'react';
-import { AppRegistry, View } from 'react-native';
-
-class JustifyContentBasics extends Component {
-  render() {
-    return (
-      // Try setting 'justifyContent' to 'center'.
-      // Try setting 'flexDirection' to 'row'.
-      <View style={{
-        flex: 1,
-        flexDirection: 'column',
-        justifyContent: 'space-between',
-      }}>
-        <View style={{width: 50, height: 50, backgroundColor: 'powderblue'}} />
-        <View style={{width: 50, height: 50, backgroundColor: 'skyblue'}} />
-        <View style={{width: 50, height: 50, backgroundColor: 'steelblue'}} />
-      </View>
-    );
-  }
-};
-
-AppRegistry.registerComponent('AwesomeProject', () => JustifyContentBasics);
-          `}/>
-
-                    <Appear>
-                        <div>
-                            <Text>New to Flex box?</Text>
-                            <Link
-                                textColor="tertiary"
-                                href="http://flexboxfroggy.com/"
-                            >
-                                http://flexboxfroggy.com/
-                            </Link>
-                        </div>
-                    </Appear>
-                </Slide>
 
                 <Slide transition={["slide"]} bgImage={images.city.replace("/", "")} bgDarken={0.75}>
                     <Heading size={1} caps fit textColor="primary">
-                        Other Components Libraries...
+                        Les autres librairies de composants...
                     </Heading>
                 </Slide>
 
@@ -370,53 +212,6 @@ AppRegistry.registerComponent('AwesomeProject', () => JustifyContentBasics);
                     </Link>
                 </Slide>
 
-                <Slide transition={["slide"]}>
-                    <Heading size={1} fit textColor="black">
-                        Completely Custom?
-                    </Heading>
-
-                    <Layout>
-                        <Fill>
-                            <Image width='25%' src={images.androidCheckin}/>
-                        </Fill>
-                    </Layout>
-                </Slide>
-
-                <Slide transition={["slide"]}>
-                    <Heading textColor="tertiary">
-                        Networking
-                    </Heading>
-                    <List>
-                        <Appear>
-                            <ListItem>New Fetch API Supported</ListItem></Appear>
-                        <Appear><ListItem>Raw XHR implemented if required</ListItem></Appear>
-                        <Appear><ListItem>WebSockets Supported</ListItem></Appear>
-                    </List>
-                </Slide>
-
-                <Slide transition={["slide"]}>
-                    <Heading textColor="tertiary">
-                        Fetch API
-                    </Heading>
-
-                    <CodePane
-                        lang="jsx"
-                        source={require("raw-loader!../assets/fetch.example")}
-                        margin="20px auto"
-                    />
-                </Slide>
-
-                <Slide transition={["slide"]}>
-                    <Heading size={3} textColor="tertiary">
-                        Fetch API - async / await
-                    </Heading>
-
-                    <CodePane
-                        lang="jsx"
-                        source={require("raw-loader!../assets/async.example")}
-                        margin="20px auto"
-                    />
-                </Slide>
 
                 <Slide transition={["slide"]}>
                     <Text textColor="tertiary">
@@ -426,7 +221,7 @@ AppRegistry.registerComponent('AwesomeProject', () => JustifyContentBasics);
 
                 <Slide transition={["slide"]}>
                     <Text textColor="tertiary">
-                        Installing dependencies
+                        Serveur Node.js
                     </Text>
 
                     <CodePane
@@ -451,7 +246,7 @@ AppRegistry.registerComponent('AwesomeProject', () => JustifyContentBasics);
 
                 <Slide transition={["slide"]}>
                     <Text textColor="tertiary">
-                        Creating a new project
+                        Créer un nouveau projet
                     </Text>
 
                     <CodePane
@@ -506,7 +301,7 @@ To run your app on Android:
 
                 <Slide transition={["slide"]}>
                     <Heading size={3} textColor="black">
-                        Running
+                        Run !
                     </Heading>
 
                     <CodePane
@@ -532,28 +327,28 @@ To run your app on Android:
 
                 <Slide transition={["slide"]}>
                     <Text textColor="tertiary">
-                        Inbuilt Tooling
+                        Outils intégrés
                     </Text>
                     <Image width="35%" src={images.androidMenu}/>
                 </Slide>
 
                 <Slide transition={["slide"]}>
                     <Text textColor="tertiary">
-                        Debug JS Remotely
+                        Debug JS distant
                     </Text>
                     <Image src={images.debugging}/>
                 </Slide>
 
                 <Slide transition={["slide"]}>
                     <Text textColor="tertiary">
-                        Enable Hot Reloading
+                        Activation Hot Reloading
                     </Text>
                     <Image src={images.hotReload}/>
                 </Slide>
 
                 <Slide transition={["slide"]}>
                     <Text textColor="tertiary">
-                        Element Inspector
+                        Inspecteur d'élement
                     </Text>
 
                     <Image src={images.inspectorCloseup}/>
@@ -561,7 +356,7 @@ To run your app on Android:
 
                 <Slide transition={["slide"]}>
                     <Text textColor="tertiary">
-                        Network Inspector
+                        Inspecteur réseau
                     </Text>
 
                     <Image src={images.networkInspector}/>
@@ -575,295 +370,48 @@ To run your app on Android:
                     <Image width='35%' src={images.stackTrace}/>
                 </Slide>
 
-
                 <Slide transition={["slide"]}>
-                    <Text textColor="tertiary">
-                        Feature Testing
+                    <Text textColor='tertiary'>
+                        On va pas se mentir
                     </Text>
 
                     <List>
-                        <Appear>
-                            <ListItem>
-                                <Link href="http://appium.io/" textColor='black'>
-                                    Appium
-                                </Link>
-                            </ListItem>
-                        </Appear>
-                        <Appear>
-                            <ListItem>
-                                <Link href="http://calaba.sh/" textColor='black'>
-                                    Calabash
-                                </Link>
-                            </ListItem>
-                        </Appear>
-                    </List>
-                    <Appear>
-                        <Text>
-                            Remember: It's a real android/ios app!
-                        </Text>
-                    </Appear>
-                </Slide>
-
-                <Slide transition={["slide"]}>
-                    <Text textColor="tertiary">
-                        JavaScript Testing - Jest
-                    </Text>
-                    <List>
-                        <Appear><ListItem>React SnapShot Testing</ListItem></Appear>
-                        <Appear><ListItem>Built-in Code Coverage</ListItem></Appear>
-                        <Appear><ListItem>Parallel test runner</ListItem></Appear>
-                        <Appear><ListItem>Mocking functions, imports, network calls</ListItem></Appear>
-                        <Appear><ListItem>Jasmine API</ListItem></Appear>
+                        <Appear><ListItem>Ecosyteme dynamique</ListItem></Appear>
+                        <Appear><ListItem>Pas de version majeur pour l'instant. Une version mineure par mois, un fix par semaine.</ListItem></Appear>
+                        <Appear><ListItem>!!!  nombreux breaking changes entre les versions !!!</ListItem></Appear>
+                        <Appear><ListItem>La communauté qui produit des modules ne suit pas toujours les changements</ListItem></Appear>
+                        <Appear><ListItem>Suivre : <Link
+                            textColor="black"
+                            href="https://js.coach/"
+                        >
+                            https://js.coach/
+                        </Link></ListItem></Appear>
                     </List>
                 </Slide>
 
-                <Slide transition={["slide"]}>
-                    <Image width="75%" src={images.jestExample}/>
-                </Slide>
+                {/*<Slide transition={["slide"]}>*/}
+                    {/*<Text textColor='tertiary'>*/}
+                        {/*Performance*/}
+                    {/*</Text>*/}
 
-                <Slide transition={["slide"]}>
-                    <Text textColor='tertiary'>
-                        How it works
-                    </Text>
+                    {/*<List>*/}
+                        {/*<Appear><ListItem>Animations - Precomputed and Optimised natively</ListItem></Appear>*/}
+                        {/*<Appear><ListItem>Reduce re-renders</ListItem></Appear>*/}
+                        {/*<Appear><ListItem>react-native-workers / native</ListItem></Appear>*/}
+                        {/*<Appear><ListItem>Inbuilt performance tooling</ListItem></Appear>*/}
+                        {/*<Appear><ListItem>Android - systrace, iOS Instruments</ListItem></Appear>*/}
+                    {/*</List>*/}
+                {/*</Slide>*/}
 
-                    <Image style={{margin: 30}} src={images.howItWorks}/>
-                </Slide>
-
-                <Slide transition={["slide"]}>
-                    <Text textColor='tertiary'>
-                        Performance
-                    </Text>
-
-                    <List>
-                        <Appear><ListItem>Animations - Precomputed and Optimised natively</ListItem></Appear>
-                        <Appear><ListItem>Reduce re-renders</ListItem></Appear>
-                        <Appear><ListItem>react-native-workers / native</ListItem></Appear>
-                        <Appear><ListItem>Inbuilt performance tooling</ListItem></Appear>
-                        <Appear><ListItem>Android - systrace, iOS Instruments</ListItem></Appear>
-                    </List>
-                </Slide>
-
-                <Slide transition={["spin", "slide"]} bgColor="tertiary">
-                    <Heading size={1} caps fit lineHeight={1.5} textColor="primary">
-                        Other cool things
-                    </Heading>
-                </Slide>
-
-                <Slide transition={["slide"]}>
-                    <Text textColor='tertiary'>
-                        Native Interopability
-                    </Text>
-
-                    <List>
-                        <Appear><ListItem>Hardware</ListItem></Appear>
-                        <Appear><ListItem>Performance</ListItem></Appear>
-                        <Appear><ListItem>Wrap an existing Java/iOS API</ListItem></Appear>
-                        <Appear><ListItem>Hybrid Native/React-Native Apps</ListItem></Appear>
-                    </List>
-                </Slide>
-
-                <Slide transition={["slide"]}>
-                    <Text textColor='tertiary'>
-                        Example: Payment Module
-                    </Text>
-                    <CodePane
-                        lang="java"
-                        source={require("raw-loader!../assets/java-interop-1.example")}
-                        margin="20px auto"
-                    />
-                </Slide>
-
-                <Slide transition={["slide"]}>
-                    <Text textColor='tertiary'>
-                        Example: React Method
-                    </Text>
-                    <CodePane
-                        lang="java"
-                        source={require("raw-loader!../assets/java-interop-2.example")}
-                        margin="20px auto"
-                    />
-                </Slide>
-
-                <Slide transition={["slide"]}>
-                    <Text textColor='tertiary'>
-                        Example: Usage
-                    </Text>
-                    <CodePane
-                        lang="jsx"
-                        source={require("raw-loader!../assets/java-interop-3.example")}
-                        margin="20px auto"
-                    />
-                </Slide>
-
-                <Slide transition={["slide"]} bgColor="primary">
-                    <Layout>
-                        <Table>
-                            <TableHeader>
-                                <TableRow>
-                                    <TableHeaderItem>JavaScript</TableHeaderItem>
-                                    <TableHeaderItem>Native</TableHeaderItem>
-                                </TableRow>
-                            </TableHeader>
-                            <TableBody>
-                                <TableRow><TableItem>Bool</TableItem><TableItem>Boolean</TableItem></TableRow>
-                                <TableRow><TableItem>Number</TableItem><TableItem>Integer</TableItem></TableRow>
-                                <TableRow><TableItem>Number</TableItem><TableItem>Double</TableItem></TableRow>
-                                <TableRow><TableItem>Number</TableItem><TableItem>Float</TableItem></TableRow>
-                                <TableRow><TableItem>String</TableItem><TableItem>String</TableItem></TableRow>
-                                <TableRow><TableItem>function</TableItem><TableItem>Callback</TableItem></TableRow>
-                                <TableRow><TableItem>Object</TableItem><TableItem>ReadableMap</TableItem></TableRow>
-                                <TableRow><TableItem>Array</TableItem><TableItem>ReadableArray</TableItem></TableRow>
-                            </TableBody>
-                        </Table>
-                    </Layout>
-                </Slide>
-
-                <Slide transition={["slide"]}>
-                    <Text textColor='tertiary'>
-                        Custom iOS/Android Views
-                    </Text>
-                </Slide>
-
-                <Slide transition={["slide"]}>
-                    <Text textColor='tertiary'>
-                        Platform-Specific Components
-                    </Text>
-
-                    <CodePane
-                        lang="jsx"
-                        source={`
-> CustomComponent.ios.js
-> CustomComponent.android.js
-`.trim()}
-                        margin="20px auto"
-                    />
-
-                    <CodePane
-                        lang="jsx"
-                        source={`
-// Note - No extension specified
-import CustomComponent from './CustomComponent';
-`.trim()}
-                        margin="20px auto"
-                    />
-                </Slide>
-
-                <Slide transition={["slide"]}>
-                    <Text textColor='tertiary'>
-                        Platform-Specific Styles
-                    </Text>
-
-                    <CodePane
-                        lang="jsx"
-                        source={`
-import { Platform, StyleSheet } from 'react-native';
-
-const styles = StyleSheet.create({
-  paddingTop: (Platform.OS === 'ios') ? 30 : 0,
-});
-`.trim()}
-                        margin="20px auto"
-                    />
-                </Slide>
-
-                <Slide transition={["slide"]} notes={`
-            - Hierarchy
-            - Temporal Navigation
-            - Horizontal Paging
-          `}>
-                    <Text textColor='tertiary'>
-                        Navigators
-                    </Text>
-
-                    <Appear>
-                        <Text textColor='quartenary'>
-                            The one thing I disliked
-                        </Text>
-                    </Appear>
-                </Slide>
-
-                <Slide transition={["slide"]}>
-                    <Text textColor='tertiary'>
-                        What's available?
-                    </Text>
-
-                    <List>
-                        <Appear><ListItem>Facebook - NavigatorIOS</ListItem></Appear>
-                        <Appear><ListItem>Facebook - Navigator</ListItem></Appear>
-                        <Appear><ListItem>Facebook - NavigationExperimental</ListItem></Appear>
-                        <Appear><ListItem>wix - react-native-navigation</ListItem></Appear>
-                        <Appear><ListItem>aksonov - react-native-router-flux</ListItem></Appear>
-                        <Appear><ListItem>ReactTraining - react-router (4.0 beta)</ListItem></Appear>
-                        <Appear><ListItem>exponent - ex-navigator</ListItem></Appear>
-                        <Appear><ListItem>airbnb - Not open sourced</ListItem></Appear>
-                        <Appear><ListItem>....</ListItem></Appear>
-                    </List>
-                </Slide>
 
                 <Slide transition={["slide"]}>
                     <Image src={images.jackie}/>
                 </Slide>
 
-                <Slide transition={["slide"]}>
-                    <Link href="https://www.react-navigation.org" textColor='tertiary'>
-                        react-navigation.org
-                    </Link>
-                    <Appear>
-                        <Text textColor="quartenary">
-                            ... This time we'll get it right!
-                        </Text>
-                    </Appear>
-
-                    <Layout>
-                        <Fill>
-                            <Android src={images.navigationAndroid}/>
-                        </Fill>
-
-                        <Fill>
-                            <IPhone src={images.navigationIos}/>
-                        </Fill>
-                    </Layout>
-                </Slide>
-
-                <Slide transition={["slide"]} bgColor="black">
-                    <Heading textColor="white">
-                        Redux
-                    </Heading>
-
-                    <Appear>
-                        <Text textColor="tertiary">
-                            ... Other state containers available.
-                        </Text>
-                    </Appear>
-                </Slide>
 
                 <Slide transition={["slide"]}>
                     <Text textColor="tertiary">
-                        A Single point of read-only truth
-                    </Text>
-                </Slide>
-
-                <Slide transition={["slide"]}>
-                    <Image width="75%" src={images.reduxStateTree1}/>
-                </Slide>
-
-                <Slide transition={["slide"]}>
-                    <Image width="75%" src={images.reduxStateTree2}/>
-                </Slide>
-
-                <Slide transition={["slide"]}>
-                    <Text textColor="tertiary">
-                        Time Travel!
-                    </Text>
-                </Slide>
-
-                <Slide transition={["slide"]}>
-                    <Image width="75%" src={images.reduxTimeTravel}/>
-                </Slide>
-
-                <Slide transition={["slide"]}>
-                    <Text textColor="tertiary">
-                        Who's using it?
+                        Qui l'utilise ?
                     </Text>
 
                     <Layout>
