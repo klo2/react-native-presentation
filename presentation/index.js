@@ -100,7 +100,7 @@ export default WithSlidesLink(class Presentation extends React.Component {
         <Slide transition={["zoom", "fade"]} bgColor="primary">
           <Heading size={2} textColor='tertiary'>react-native?</Heading>
           <List>
-            <Appear><ListItem>Developpement d'application mobile avec React</ListItem></Appear>
+            <Appear><ListItem>Developpement dapplication mobile avec React test</ListItem></Appear>
             <Appear><ListItem>Support Android et iOS</ListItem></Appear>
             <Appear><ListItem>Truly native - not just a web view</ListItem></Appear>
           </List>
