@@ -1,7 +1,7 @@
 import React from 'react';
 
 export default function (Presentation) {
-  const slidesUrl = 'https://alanfoster.github.io/react-native-presentation';
+  const slidesUrl = 'http://kivabien.fr/react-native/';
   return (props) => (
     <div>
       <div style={{
