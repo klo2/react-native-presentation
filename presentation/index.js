@@ -29,6 +29,7 @@ import WithSlidesLink from './with-slides-link';
 import {IPhone, Android} from './phones';
 
 const images = {
+    accueil: require("../assets/accueil.jpg"),
     city: require("../assets/city.jpg"),
     buttons: require("../assets/buttons.png"),
     reactNativeElements: require("../assets/react-native-elements.png"),
@@ -87,7 +88,7 @@ export default WithSlidesLink(class Presentation extends React.Component {
     render() {
         return (
             <Deck transition={["zoom", "slide"]} theme={theme} transitionDuration={500}>
-                <Slide transition={["zoom"]} bgColor="primary">
+                <Slide transition={["zoom"]} bgImage={images.accueil.replace("/", "")}  >
                     <Heading size={1} fit caps lineHeight={1} textColor="black">
                         Bienvenue au Meetup React-Native</Heading>
                     <List>
@@ -97,18 +98,18 @@ export default WithSlidesLink(class Presentation extends React.Component {
                 </Slide>
 
                 <Slide transition={["zoom", "fade"]} bgColor="primary">
-                    <Heading size={2} textColor='tertiary'>react-native?</Heading>
+                    <Heading size={2} textColor='tertiary'>react-native ?</Heading>
                     <List>
                         <Appear><ListItem>Developpement d'application mobile avec React</ListItem></Appear>
                         <Appear><ListItem>Support Android et iOS</ListItem></Appear>
-                        <Appear><ListItem>Truly native - not just a web view</ListItem></Appear>
+                        <Appear><ListItem>Le rendu est du native - ce n'est pas une web view</ListItem></Appear>
                     </List>
                 </Slide>
 
                 <Slide transition={["zoom", "fade"]} bgColor="primary">
-                    <Heading size={2} textColor='tertiary'>... What is React?</Heading>
+                    <Heading size={2} textColor='tertiary'>Qu'est-ce que React ?</Heading>
                     <List>
-                        <Appear><ListItem>A powerful way to construct user interfaces</ListItem></Appear>
+                        <Appear><ListItem>React est la librairie Javasript créée par Facebook et Instagram</ListItem></Appear>
                         <Appear><ListItem>Built upon the concept of Components</ListItem></Appear>
                         <Appear><ListItem>A JavaScript library used and developed by Facebook</ListItem></Appear>
                         <Appear><ListItem>Open Source</ListItem></Appear>
