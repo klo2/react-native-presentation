@@ -32,7 +32,10 @@ import {IPhone, Android} from './phones';
 const images = {
     accueil: require("../assets/accueil.jpg"),
     reactsite: require("../assets/reactsite.jpg"),
+    roue: require("../assets/roue.png"),
     city: require("../assets/city.jpg"),
+    labarre: require("../assets/labarre.gif"),
+    wtf: require("../assets/wtf.gif"),
     buttons: require("../assets/buttons.png"),
     reactNativeElements: require("../assets/react-native-elements.png"),
     reactNativeMaterial1: require("../assets/reactNativeMaterial1.gif"),
@@ -57,6 +60,10 @@ const images = {
     reduxStateTree1: require('../assets/redux-state-tree-1.png'),
     reduxStateTree2: require('../assets/redux-state-tree-2.png'),
     reduxTimeTravel: require('../assets/redux-time-travel.gif'),
+
+    componentBased: require('../assets/composants_outline.jpg'),
+    componentDesc: require('../assets/composant_exemple.png'),
+    componentDataFlow: require('../assets/data-flow.png'),
 };
 
 const logos = {
@@ -99,6 +106,19 @@ export default WithSlidesLink(class Presentation extends React.Component {
                     </List>
                 </Slide>
 
+                <Slide transition={["slide"]}>
+                    <Heading size={1} fit textColor="black">
+                        Les meetup
+                    </Heading>
+                    <br/>
+                    <Image width="75%"  src={images.roue} marginTop="100px" />
+                    <Link
+                        textColor="tertiary"
+                        href="https://www.meetup.com"
+                    >
+                        https://www.meetup.com
+                    </Link>
+                </Slide>
                 <Slide transition={["zoom", "fade"]} bgColor="primary">
                     <Notes>
                         <h4>Slide notes</h4>
@@ -116,6 +136,8 @@ export default WithSlidesLink(class Presentation extends React.Component {
                     </List>
                 </Slide>
 
+
+
                 <Slide transition={["zoom", "fade"]} bgColor="primary">
                     <Heading size={2} textColor='tertiary'>Qu'est-ce que React ?</Heading>
                     <List>
@@ -126,25 +148,7 @@ export default WithSlidesLink(class Presentation extends React.Component {
                     </List>
                 </Slide>
 
-                <Slide transition={["zoom", "fade"]} bg bgColor="primary">
-                    <Heading size={2} textColor='tertiary'>Comparaison avec les autres technologies</Heading>
-                    <List>
-                        <Appear><ListItem>Apache Cordova et Ionic </ListItem></Appear>
-                        <Appear><ListItem>Application native qui charge une webview</ListItem></Appear>
-                        <Appear><ListItem>Une page web(html, css, javascript) est chargée dans cette webview</ListItem></Appear>
-                        <Appear><ListItem>Un bridge javascript / natif permet d'utiliser les méthodes natives</ListItem></Appear>
-                    </List>
-                </Slide>
-                <Slide transition={["zoom", "fade"]} bg bgColor="primary">
-                    <Heading size={2} textColor='tertiary'>Les problèmes</Heading>
-                    <List>
-                        <Appear><ListItem>Glisser déposer</ListItem></Appear>
-                        <Appear><ListItem>Liste d'image</ListItem></Appear>
-                        <Appear><ListItem>Apparition du clavier</ListItem></Appear>
-                        <Appear><ListItem>Webview style</ListItem></Appear>
-                        <Appear><ListItem>Performance inégale</ListItem></Appear>
-                    </List>
-                </Slide>
+
                 <Slide transition={["zoom", "fade"]} bg bgColor="primary">
                     <Heading size={2} textColor='tertiary'>L'approche React Native</Heading>
                     <List>
@@ -211,7 +215,55 @@ export default WithSlidesLink(class Presentation extends React.Component {
                         https://github.com/react-native-community/react-native-elements
                     </Link>
                 </Slide>
-
+                <Slide transition={["zoom", "fade"]} bg bgColor="primary">
+                    <Heading size={2} textColor='tertiary'>Comparaison avec les autres technologies</Heading>
+                    <List>
+                        <Appear><ListItem>Apache Cordova et Ionic </ListItem></Appear>
+                        <Appear><ListItem>Application native qui charge une webview</ListItem></Appear>
+                        <Appear><ListItem>Une page web(html, css, javascript) est chargée dans cette webview</ListItem></Appear>
+                        <Appear><ListItem>Un bridge javascript / natif permet d'utiliser les méthodes natives</ListItem></Appear>
+                    </List>
+                </Slide>
+                <Slide transition={["zoom", "fade"]} bg bgColor="primary">
+                    <Heading size={2} textColor='tertiary'>Les problèmes</Heading>
+                    <List>
+                        <Appear><ListItem>Glisser déposer</ListItem></Appear>
+                        <Appear><ListItem>Liste d'image</ListItem></Appear>
+                        <Appear><ListItem>Apparition du clavier</ListItem></Appear>
+                        <Appear><ListItem>Webview style</ListItem></Appear>
+                        <Appear><ListItem>Performance inégale</ListItem></Appear>
+                    </List>
+                </Slide>
+                <Slide transition={["zoom"]} bgImage="http://altitudelabs.com/blog/content/images/2017/08/react-native-hybrid-apps.png"/>
+                <Slide transition={["zoom"]}>
+                    <Image width='100%' src='https://www.logicroom.co/react-native-architecture-explained/images/3_image.png'/>
+                </Slide>
+                <Slide transition={["zoom"]}>
+                    <Image width='100%' src='https://www.logicroom.co/react-native-architecture-explained/images/4_image.png'/>
+                </Slide>
+                <Slide transition={["zoom", "fade"]} bgColor="primary">
+                    <Heading size={2} textColor='tertiary'>Architecture Composant</Heading>
+                </Slide>
+                <Slide transition={["zoom", "fade"]} bgImage={images.componentBased} />
+                <Slide transition={["zoom", "fade"]} bgColor="primary">
+                    <Layout>
+                        <Fill>
+                            <List>
+                                <ListItem>Réfléchir son UI avec des composants</ListItem>
+                                <Appear><ListItem>Réutiliser ses composants</ListItem></Appear>
+                                <Appear><ListItem>Parents / enfants</ListItem></Appear>
+                            </List>
+                        </Fill>
+                    </Layout>
+                </Slide>
+                <Slide transition={["zoom", "fade"]} bgColor="primary">
+                    <Heading size={2} textColor='tertiary'>Un composant ?</Heading>
+                </Slide>
+                <Slide transition={["zoom", "fade"]} bgImage={images.componentDesc} />
+                <Slide transition={["zoom", "fade"]} bgColor="primary">
+                    <Heading size={2} textColor='tertiary'>Données : State & Props</Heading>
+                </Slide>
+                <Slide transition={["zoom", "fade"]} bgImage={images.componentDataFlow} />
 
                 <Slide transition={["slide"]}>
                     <Text textColor="tertiary">
@@ -242,6 +294,9 @@ export default WithSlidesLink(class Presentation extends React.Component {
                             https://facebook.github.io/react-native/docs/getting-started.html
                         </Link>
                     </Appear>
+                </Slide>
+                <Slide transition={["zoom"]}>
+                    <Image width='100%' src='https://cdn-images-1.medium.com/max/1600/1*ujrHwrixA0w2azWVlZb5ug.png'/>
                 </Slide>
 
                 <Slide transition={["slide"]}>
@@ -369,6 +424,12 @@ To run your app on Android:
 
                     <Image width='35%' src={images.stackTrace}/>
                 </Slide>
+                <Slide transition={["slide"]}>
+                    <Heading size={2} textColor='tertiary'>La demo !</Heading>
+
+                    <Image width='50%' src={images.labarre}/>
+                </Slide>
+
 
                 <Slide transition={["slide"]}>
                     <Text textColor='tertiary'>
@@ -377,36 +438,28 @@ To run your app on Android:
 
                     <List>
                         <Appear><ListItem>Ecosyteme dynamique</ListItem></Appear>
-                        <Appear><ListItem>Pas de version majeur pour l'instant. Une version mineure par mois, un fix par semaine.</ListItem></Appear>
+                        <Appear><ListItem>Pas de version majeur pour l'instant. </ListItem></Appear>
+                        <Appear><ListItem>Une version mineure par mois (0.51), un fix par semaine.</ListItem></Appear>
                         <Appear><ListItem>!!!  nombreux breaking changes entre les versions !!!</ListItem></Appear>
-                        <Appear><ListItem>La communauté qui produit des modules ne suit pas toujours les changements</ListItem></Appear>
-                        <Appear><ListItem>Suivre : <Link
-                            textColor="black"
+                    </List>
+                </Slide>
+                <Slide transition={["slide"]}>
+                    <Text textColor='tertiary'>
+                        On va pas se mentir
+                    </Text>
+
+                    <List>
+                        <ListItem>La communauté qui produit des modules ne suit pas toujours les changements</ListItem>
+                            <Image width='50%' src={images.wtf}/>
+                        <ListItem>Suivre : <Link
+                            textColor="tertiary"
                             href="https://js.coach/"
                         >
                             https://js.coach/
-                        </Link></ListItem></Appear>
+                        </Link></ListItem>
                     </List>
                 </Slide>
 
-                {/*<Slide transition={["slide"]}>*/}
-                    {/*<Text textColor='tertiary'>*/}
-                        {/*Performance*/}
-                    {/*</Text>*/}
-
-                    {/*<List>*/}
-                        {/*<Appear><ListItem>Animations - Precomputed and Optimised natively</ListItem></Appear>*/}
-                        {/*<Appear><ListItem>Reduce re-renders</ListItem></Appear>*/}
-                        {/*<Appear><ListItem>react-native-workers / native</ListItem></Appear>*/}
-                        {/*<Appear><ListItem>Inbuilt performance tooling</ListItem></Appear>*/}
-                        {/*<Appear><ListItem>Android - systrace, iOS Instruments</ListItem></Appear>*/}
-                    {/*</List>*/}
-                {/*</Slide>*/}
-
-
-                <Slide transition={["slide"]}>
-                    <Image src={images.jackie}/>
-                </Slide>
 
 
                 <Slide transition={["slide"]}>
